@@ -1,0 +1,24 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<div id="errorList">    
+
+</div>
+
+@Html.Action("GetInstances", "Instances", null)
+@Html.Action("InboundInvites", "Instances", null)
+
+<span id="CreateInstance" class="indexButton openDialog button-dialog-close" data-dialog="CreateInstanceDialog">New Instance</span>
+
+<div class="dialog dialog-modal" id="CreateInstanceDialog">@Html.Action("Create", "Instances")</div>
+<div class="dialog dialog-modal" id="DeleteInstanceDialog">@Html.Action("DeleteInstance", "Instances")</div>
+<div class="dialog dialog-modal" id="InviteDialog"></div>
+
+@using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right removeEnterSubmit" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <a href="/Manage" class="indexButton">Manage Account</a>
+        <a href="javascript:document.getElementById('logoutForm').submit()" class="indexButton">Log off</a>
+    }

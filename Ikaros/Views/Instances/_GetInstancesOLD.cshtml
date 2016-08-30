@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Genxyz.Models.InstanceIndex>
+
+<table class="table instanceTable">
+    <tr class="bottomBorder">
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatorName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model=> model.CreationDate)
+        </th>
+        <th>
+
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr class="instanceDetails" data-instance="@item.InstanceID">
+        <td>
+            @Html.RouteLink(item.Name, new { action="Genxyz", controller ="Instances", InstanceID = item.InstanceID}, new { @class = "instanceLink" })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatorName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreationDate)
+        </td>
+        <td class="align-right">
+        <span class="btn btn-success showMembers" data-instance="@item.InstanceID"><span class="fa fa-group"></span></span>
+        @{ 
+            string delete = "";
+            string modify = "";
+            if (Generic.GetUserName() == item.Creator)
+            {
+                delete = "<span class=\"btn btn-success button-delete-instance openDialog\" data-dialog=\"DeleteInstanceDialog\" data-instance=\"" + item.InstanceID +
+                    "\" data-name=\"" + item.Name + "\"><span class=\"fa fa-trash\"></span></span>";
+                modify = "<span class=\"btn btn-success button-submit-form showConfig\" data-instance=\"" + item.InstanceID +
+                    "\" data-name=\"" + item.Name + "\"><span class=\"fa fa-cog\"></span></span>";
+            }
+        }
+        @Html.Raw(delete)
+        @Html.Raw(modify)
+        </td>
+    </tr>
+    //get member row.
+    <tr hidden class="memberRow subHeader" data-instance="@item.InstanceID">
+        <td></td>
+        <td></td>
+        <td class="align-right">
+            User
+        </td>
+        <td class="align-left">
+            Status
+        </td>
+    </tr>
+    //row for editing.
+    <tr hidden class="configRow subHeader" data-instance="@item.InstanceID">
+        @using (Html.BeginForm("EditInstance", "Instances", FormMethod.Post))
+        { 
+            @Html.Hidden("InstanceID", item.InstanceID)
+            <td>@Html.EditorFor(model => item.Name)</td>
+            <td></td>
+            <td></td>
+            <td>
+                <button type="button" class="btn btn-success submit-form-button saveConfig" data-instance="@item.InstanceID">Save Changes</button>
+            </td>
+        }
+    </tr>
+    @Html.Action("InstanceMembers", "Instances", new { InstanceID = item.InstanceID })
+            //invite row here.
+    @Html.Action("CreateInvite", "Instances", new { InstanceID = item.InstanceID })
+    <tr class="bottomBorder">
+
+    </tr>
+}
+</table>

@@ -1,0 +1,56 @@
+﻿@model IEnumerable<Genxyz.Models.InstanceIndex>
+
+
+    <div class="col-md-12" id="instanceHeader">
+        Instances
+    </div>
+    @foreach (var item in Model)
+    {
+        <div class="col-md-12 instanceRow">
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="nameField" data-instance="@item.InstanceID">
+                        @Html.RouteLink(item.Name, new { action = "Genxyz", controller = "Instances", InstanceID = item.InstanceID }, new { @class = "instanceLink", @data_instance=@item.InstanceID })
+                    </span>
+                    <span class="nameField" data-instance="@item.InstanceID" hidden>
+                        @Html.EditorFor(model => item.Name, new { htmlAttributes = new { @class = "input-large nameInput", @placeholder = "Instance Name...", @data_instance=@item.InstanceID } })
+                    </span>
+                    <br /><br />
+                    @Html.DisplayFor(modelItem => item.CreatorName)<br />
+                    @Html.DisplayFor(modelItem => item.CreationDate)
+                </div>
+                <div class="col-md-4"></div>
+                <div class="col-md-4 indexButtons">
+                    <br />
+                    <span class="indexButton showMembers" data-instance="@item.InstanceID">Share</span>
+                    @{
+                        string modify = "";
+                        if (Generic.GetUserName() == item.Creator)
+                        {
+                            modify = "<span class=\"indexButton showConfig\" data-instance=\"" + item.InstanceID +
+                                "\" data-name=\"" + item.Name + "\">Edit</span>";
+                        }
+                    }
+                    @Html.Raw(modify)
+
+                    @*invite row here.
+                    @Html.Action("CreateInvite", "Instances", new { InstanceID = item.InstanceID })*@
+                </div>
+            </div>
+            <div class="row">
+                <div hidden class="col-md-12 configRow subDetails" data-instance="@item.InstanceID">
+                    @using (Html.BeginForm("EditInstance", "Instances"))
+                    {
+                        @Html.Hidden("InstanceID", item.InstanceID)
+                        @Html.HiddenFor(model => item.Name, new { @class = "itemName", @data_instance = @item.InstanceID })
+                        <button type="button" class="indexButton saveConfig" data-instance="@item.InstanceID">Save Changes</button>
+                    }
+                </div>
+            </div>
+            <div class="row">
+                <div hidden class="col-md-12 memberRow subDetails" data-instance="@item.InstanceID">
+                    @Html.Action("InstanceMembers", "Instances", new { InstanceID = item.InstanceID })
+                </div>
+            </div>
+        </div>
+    }

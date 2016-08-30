@@ -1,0 +1,15 @@
+﻿
+@{
+    ViewBag.Title = "MassDataCreate";
+}
+
+<h2>This will create a huge amount of Data!</h2>
+@Html.AntiForgeryToken()
+@using (Html.BeginForm())
+{
+    @Html.Label("Password: ") @Html.TextBox("Password")<br />
+    @Html.Label("Count: ")@Html.TextBox("Count")<br />
+    @Html.Label("InstanceID: ")@Html.TextBox("InstanceID")<br />
+
+    @GenericHelper.FormSubmitButton("Send","danger")
+}

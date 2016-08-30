@@ -1,0 +1,41 @@
+﻿@model Genxyz.Models.EditNode
+
+@using (Html.BeginForm("UpdateNode", "Nodes"))
+{
+    @Html.HiddenFor(model => model.InstanceID)
+    @Html.HiddenFor(model => model.NodeID)
+    <span class="genxyz-detailsSubMenuTitleBar"><span class="genxyz-detailsSubMenuTitle">Node <span class="NodeID"></span></span></span>
+    <div class="genxyz-detailsSubMenuContent">
+        <table class="thinTable">
+            <tr>
+                <th>xPos:</th>
+                <th>yPos:</th>
+                <th>zPos:</th>
+            </tr>
+            <tr>
+                <td>
+                    @Html.TextBoxFor(x => x.xPos)
+                </td>
+                <td>
+                    @Html.TextBoxFor(x => x.yPos)
+                </td>
+                <td>
+                    @Html.TextBoxFor(x => x.zPos)
+                </td>
+            </tr>
+        </table>
+        <span class="horizontal-container">
+            @Html.TextBoxFor(x => x.Name, new { @class = "ignore-other-inputs transparent-textarea genxyz-menu-input full-width", @placeholder = "Title..." })
+        </span>
+        <span class="horizontal-container">
+            @Html.TextAreaFor(x => x.Comments, new { @class = "ignore-other-inputs transparent-textarea genxyz-menu-input full-width", @placeholder = "Description...", @rows="4" })
+        </span>
+        <span class="horizontal-container">
+            @GenericHelper.Button("<span class='fa fa-save'></span>", "genxyz-editNode-save", "success", "float-right")
+        </span>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,544 @@
+﻿.ui{
+    font-family:"Droid Sans",Arial,serif;
+}
+
+body {
+    font-family:"Economica",Arial,serif;
+
+    overflow: hidden;
+    height:100%;
+}
+
+.container-full{
+    margin: 0 auto;
+    width:100%;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    overflow: hidden;
+    height:100%;
+    padding-left:0px;
+    padding-right:0px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.input-align-right{
+    float:right;
+    text-align:right;
+    display:inline-block;
+}
+.input-align-left{
+    float:left;
+    text-align:left;
+    display:block;
+}
+
+.align-right-icon{
+    text-align:right;
+    float:right;
+    line-height:2em;
+}
+
+.align-right{
+    text-align:right;
+    float:right;
+}
+
+#genxyz-topBar{
+    top:0px;
+    left:0px;
+    z-index:1002;
+    position:absolute;
+    display:block;
+    height: 2em;
+    line-height: 2em;
+    font-size:1.5em;
+    font-family:Economica;
+}
+
+.genxyz-topBar-Icon span{
+    cursor:pointer;
+}
+
+.genxyz-topBar-Text{
+    margin-left:.5em;
+    font-family:Economica;
+    color:red;
+}
+
+.genxyz-icon:first-line{
+    margin-left:1em;
+}
+
+.genxyz-icon{
+    margin-left:.5em;
+    color: rgba(150, 150, 150, 1);
+}
+
+.genxyz-icon:hover{
+    color: rgba(185,185,185,1);
+}
+
+.activeIcon{
+    color: rgba(220,220,220,1);
+}
+
+.activeIcon:hover{
+    color: rgba(255,255,255,1);
+}
+
+#genxyz-editMenu input{
+    color:white;
+}
+
+#genxyz-createNodeName{
+    color:white;
+}
+
+.genxyz-menu {
+    display: none;
+    z-index: 1000;
+    position: absolute;
+    overflow: hidden;
+    white-space: nowrap;
+    background: rgba(0,0,0,0.8);
+    color: white;
+    border-radius: 5px;
+}
+
+.genxyz-menu li {
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.genxyz-menu li:hover {
+    background-color: #DEF;
+    color:black;
+}
+
+.genxyz-menu input[type=text]{
+    background-color: rgba(33,33,33,0.3);
+    border:none;
+    color:white;
+    font-family:Economica;
+}
+
+.genxyz-menu input[type=checkbox]{
+    text-align:center;
+    vertical-align:middle;
+    padding-left:0px;
+    margin-left:0px;
+}
+
+.genxyz-selectMenu{
+    min-width:10em;
+}
+
+#genxyz-subMenu{
+    min-width: 300px;
+    min-height: 200px;
+}
+
+#genxyz-instanceMenu{
+    display: none;
+    z-index:1000;
+    position:absolute;
+    overflow:hidden;
+    border: 1px solid #ccc;
+    white-space: nowrap;
+    font-family: "Droid-Sans", sans-serif;
+    background: #FFF;
+    color: #333;
+    border-radius:5px;
+    height:100%;
+    width: 20%;
+    top:0px;
+    left:0px;
+}
+
+.genxyz-input{
+    display: none;
+    z-index: 1000;
+    position: absolute;
+    overflow: hidden;
+    white-space: nowrap;
+    background-color:transparent;
+    background: transparent;
+    border: 2px solid black;
+    color:black;
+}
+
+.genxyz-input textarea, input{
+    background-color:transparent;
+    color:black;
+    resize:none;
+    min-width: 2em;
+    min-height: 2em;
+}
+
+.layerItem{
+    display:inline-block;
+    text-align:center;
+    background-color: rgba(0,0,0,0);
+    color: rgba(255,255,255,1);
+    cursor: pointer;
+    padding-bottom:5px;
+}
+
+.generationLayer{
+    width:100%;
+    text-align:center;
+}
+
+.viewLayer{
+    margin-left:0.5em;
+    margin-right:0.5em;
+    color: rgba(150, 150, 150, 1);
+}
+
+.selectLayer{
+    width:80%;
+    user-select:none;
+}
+
+.selectLayer:hover{
+    background-color: rgba(110,50,50,0.8);
+}
+
+.selectLayer[data-active='true']{
+    background-color: rgba(150,50,50,0.8);
+}
+
+.selectLayer[data-active='true']:hover{
+    background-color: rgba(185,50,50,0.8);
+}
+
+.viewLayer:hover{
+    color: rgba(185,185,185,1);
+}
+
+.viewLayer[data-selected='true']{
+    color: rgba(50,185,50,1);
+}
+
+.viewLayer[data-selected='true']:hover{
+    color: rgba(50,220,50,1);
+}
+
+.lineItem{
+    display:block;
+    width:100%;
+    text-align:center;
+}
+
+.transparent-textarea{
+    background-color:transparent;
+    color:white;
+    resize:none;
+    border:none;
+}
+
+#GenxyzUI{
+    position:absolute;
+    padding-left:0px;
+    padding-right:0px;
+    width:100%;
+    height:100%;
+}
+
+.genxyz-data-overlay{
+    z-index:10;
+    position:absolute;
+    font-family:"Droid Sans", sans-serif;
+    color:white;
+    pointer-events:none;
+    background-color:rgba(113, 107, 107, 0.3);
+    display:none;
+}
+
+.genxyz-data-overlay .title{
+    padding-left:1em;
+    padding-right:2em;
+    padding-top:0.2em;
+    padding-bottom:0.2em;
+    font-size:1.2em;
+}
+
+.genxyz-data-overlay .title[data-selected='true']{
+    background-color:rgba(187, 187, 187, 0.5);
+}
+
+.genxyz-data-overlay .description{
+    padding-top:0.5em;
+    padding-left:1em;
+    padding-right:2em;
+}
+
+#openNewLayerMenu{
+    display:block;
+    margin-top:1em;
+    margin-bottom:1em;
+    text-align:right;
+    cursor:pointer;
+}
+
+#genxyz-editLayer{
+    padding-top:.5em;
+    padding-bottom:.5em;
+    width:400px;
+}
+
+.horizontal-container{
+    display:inline-block;
+    width:100%;
+}
+
+.closerCheckBox{
+    min-width:2em;
+}
+
+.pad-bottom{
+    margin-bottom:10px;
+}
+
+.float-right {
+    float: right;
+}
+
+.float-left{
+    float:left;
+}
+
+.genxyz-menu-input-label{
+    width:20%;
+    max-width: 100%;
+    background-color: rgba(33,33,33,0.3);
+    border:none;
+    color:white;
+    font-family:"Droid Sans", sans-serif;
+}
+.genxyz-menu-input{
+    width:80%;
+    max-width: 100%;
+    background-color: rgba(33,33,33,0.3);
+    border:none;
+    color:white;
+    font-family:"Droid Sans", sans-serif;
+    margin-top:1px;
+    margin-bottom:1px;
+}
+
+.full-width{
+    width:100%;
+    overflow:hidden;
+}
+
+.paddedContainer{
+    display:block;
+}
+
+#genxyz-editNode-layerList{
+    color:red;
+}
+
+.selectedNodeText{
+    color:red;
+}
+
+#genxyz-editNode-linkListParent {
+    margin-bottom:1em;
+    width:100%;
+}
+
+.deleteLinkIcon{
+    float:right;
+    text-align:right;
+    cursor:pointer;
+}
+
+.link-margin{
+    margin-left:3em;
+    margin-right:3em;
+}
+
+.itemListing{
+    display:inline-block;
+    width:100%;
+}
+
+.itemListing:hover{
+    background-color: rgba(30,30,30,0.4);
+}
+
+.right-click-menu .itemListing {
+    display:inline-block;
+    width:100%;
+    cursor:pointer;
+}
+
+.right-click-menu .itemListing:hover {
+    background-color: #DEF;
+    color:black;
+}
+
+#genxyz-debug{
+    position:absolute;
+    top:50px;
+    left:0px;
+    color:white;
+    font-family:Economica;
+    display:block;
+}
+
+#genxyz-rightClickMenu{
+    min-width:15em;
+    padding-bottom:1em;
+    padding-top:1em;
+
+    z-index: 1002;
+    position: absolute;
+    overflow:hidden;
+    display:block;
+    background: rgba(0,0,0,0.9);
+    border-radius:10px;
+
+    font-family:Economica;
+    font-size:15px;
+}
+
+#genxyz-detailsMenu{
+    color:white;
+    z-index: 1002;
+    position:absolute;
+    overflow:hidden;
+    right:0px;
+    top:0px;
+    display:block;
+    background: rgba(0,0,0,0.4);
+    border-radius:10px;
+    height:100%;
+    max-width:25%;
+    font-family:Economica;
+    font-size:15px;
+    border-left: solid 2px;
+    border-color: rgba(255,255,255,0.7);
+    font-family:"Droid Sans", sans-serif;
+}
+
+.genxyz-detailsSubMenu{
+    background-color: rgba(70,70,70,1);
+    margin-top: .5em;
+    margin-bottom: .5em;
+    margin-left: .5em;
+    padding-bottom: .3em;
+    padding-right:.5em;
+}
+
+.genxyz-detailsSubMenuTitle{
+    background-color: rgba(74,107,189, 0.9);
+    font-size:1.5em;
+    font-family:Economica;
+    text-align:center;
+    min-width:5%;
+    margin-top:10px;
+    padding-left:20px;
+    padding-right:20px;
+    padding-top:5px;
+    padding-bottom:5px;
+}
+
+.thinTable{
+    max-width:20px;
+}
+.thinTable tbody tr{
+    width:33%;
+}
+.thinTable th{
+    width:33%;
+}
+.thinTable input{
+    max-width:90px;
+}
+
+.genxyz-detailsSubMenuTitle.redTitle{
+    background-color: rgba(180,68,68, 0.9);
+}
+
+.genxyz-detailsSubMenuContent{
+    margin-top:1em;
+    margin-left:10%;
+}
+
+.right-click-menu{
+    width:80%;
+    margin-left:10%;
+    margin-right:10%;
+}
+
+.listItem::before{
+    content: "\2022";
+    padding-left:1em;
+    padding-right:1em;
+}
+
+.listItem {
+    display:inline-block;
+    width:100%;
+    color:white;
+    cursor: pointer;
+}
+
+.listItem:hover {
+    background-color: #DEF;
+    color:black;
+}
+.noBorders{
+    border:none;
+}
+
+.noBorders td{
+    min-width:30px;
+}
+
+.noTitleDialog .ui-dialog-titlebar {display:none}
+
+.ui-widget-content{
+    border:0px;
+    border-bottom:1px solid white;
+    border-top:1px solid white;
+    color:white;
+}
+
+.ui-dialog{
+    background:rgba(0,0,0,0.4);
+}
+.ui-dialog-title{
+    background:rgba(0,0,0,0.4);
+}
+
+.genxyz-help{
+    color:white;
+}
+
+.helpText{
+    color:red;
+}
+
+.topBorder{
+    border-top: 1px solid white;
+}
+

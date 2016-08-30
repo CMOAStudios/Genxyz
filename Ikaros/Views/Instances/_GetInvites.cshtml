@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Genxyz.Models.Invite>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Sender)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InstanceName)
+        </th>
+        <th>
+           
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sender)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.InstanceName)
+            </td>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                @Html.Hidden("InviteID", item.InviteID)
+                <td>
+                    <button type="button" class="btn btn-success button-submit-form" data-target="/Instances/AcceptInvite">Accept</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-success button-submit-form" data-target="/Instances/RejectInvite">Reject</button>
+                </td>
+            }
+        </tr>
+    }
+</table>

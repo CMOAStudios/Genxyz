@@ -1,0 +1,16 @@
+﻿@* when right clicking without any node selected, and without any target. *@
+<div id="right-click-menu-noTarget" class="right-click-menu" hidden>
+    <div class="listItem">No option to show... for now.</div>
+</div>
+
+@* when right clicking anywhere, with nodes selected. *@
+<div id="right-click-menu-selected" class="right-click-menu" hidden>
+    <div class="listItem" id="deleteNodeMenu">Delete Nodes</div>
+    <div class="listItem" id="deleteNodeConfirm" hidden>Confirm Delete<span class="align-right"><span class="fa fa-trash"></span></span></div>
+    <div class="listItem" id="addNodesToPath">Add to Path</div>
+    <div class="listItem" id="createPathFromNodes">Create Path from Nodes</div>
+    <div class="listItem" id="createPathFromNodesChildren">Create Path from Nodes + Children</div>
+</div>
+@* when right clicking on a node. *@
+<div id="right-click-menu-selected-target" class="right-click-menu" hidden>
+</div>

@@ -1,0 +1,12 @@
+﻿<div class="col-md-12">
+    @using (Html.BeginForm("DeleteJSON", "Instances"))
+    {        
+        <input type="hidden" name="InstanceID" id="deleteInstanceID" />
+            <p>Are you certain you wish to delete <span id="deleteInstanceName"></span>? The instance will be lost.</p>
+            <div class="col-md-12">
+                <div class="col-md-4"><button class="submit-form-button btn btn-danger"><i class="fa fa-trash"> Confirm</i></button></div>
+                <div class="col-md-4"></div>
+                <div class="col-md-4">@GenericHelper.Button("Cancel", "", "success", "button-cancel")</div>
+            </div>
+    }
+</div>

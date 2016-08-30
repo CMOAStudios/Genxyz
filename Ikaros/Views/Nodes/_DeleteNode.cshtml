@@ -1,0 +1,13 @@
+﻿@model Genxyz.Models.Node
+
+<div id="genxyz-deleteMenu" hidden>
+
+    <span class="errors text-warning">Are you sure you want to delete this node?</span>
+
+    @Html.HiddenFor(model => model.NodeID)
+    @Html.HiddenFor(model => model.InstanceID)
+
+    <div>
+        <input type="button" value="Delete" class="btn btn-default" id="PostDeleteNode" />
+    </div>
+</div>

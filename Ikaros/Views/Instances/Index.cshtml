@@ -1,0 +1,49 @@
+﻿@model IEnumerable<Genxyz.Models.Instance>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<div id=indexTop>
+    <span class="bigTitleText">Index</span>
+</div>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Creator)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Creator)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.InstanceID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.InstanceID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.InstanceID })
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2"></td>
+        <td colspan="2">
+            <input type="hidden" id="inviteInstanceID" name="InstanceID" hidden value="@Html.Raw(item.InstanceID)"/>
+            <input type="text" class="form-control" name="Recipient"/>
+            <span class="btn btn-success button-submit-form" data-target="/Instances/SendInvite">Send</span>
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,14 @@
+﻿@model IEnumerable<Genxyz.Models.MemberList>
+
+<div class="row" id="memberRow">
+    <table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.UserName</td>
+                <td>@item.State</td>
+            </tr>
+        }
+    </table>
+</div>
+@Html.Action("CreateInvite", "Instances", new { InstanceID = ViewBag.InstanceID })

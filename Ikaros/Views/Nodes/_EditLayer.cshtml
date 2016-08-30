@@ -1,0 +1,25 @@
+﻿@model Genxyz.Models.EditLayer
+
+@using (Html.BeginForm())
+{
+    <span class="paddedContainer">
+        @Html.AntiForgeryToken()
+
+        @Html.HiddenFor(x => x.InstanceID)
+        @Html.HiddenFor(x => x.LayerID)
+
+        <span class="horizontal-container full-width">
+            <span class="genxyz-menu-input-label">Edit Layer:</span>
+            @Html.TextBoxFor(x => x.Name, new { @class = "ignore-other-inputs genxyz-menu-input" })
+        </span><br />
+        <span class="horizontal-container full-width">
+            <span id="edit-Layer" class="btn btn-success submit-form-button float-right" data-target="/Nodes/EditLayer"><span class="fa fa-floppy-o"></span></span>
+            <span id="delete-Layer" class="btn btn-danger float-right"><span class="fa fa-trash"></span></span>
+        </span><br /><br />
+        <span class="horizontal-container full-width">
+            <span id="delete-Container" style="display:none;" class="float-right">
+                <span>Confirm delete: <span id="delete-layer-confirm" class="btn btn-danger" data-target="/Nodes/DeleteLayer"><span class="fa fa-trash"></span></span></span>
+            </span>
+        </span>
+    </span>
+}

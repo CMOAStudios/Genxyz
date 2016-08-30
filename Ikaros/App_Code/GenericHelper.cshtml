@@ -1,0 +1,12 @@
+﻿@helper FormSubmitButton(string text, string buttonType="default", string cssClasses="")
+{ 
+    <button class="submit-form-button btn btn-@buttonType @cssClasses">@(new HtmlString(text))</button>
+}
+
+@helper LinkButton(string action, string controller, string text, string buttonType = "default", string cssClasses="") { 
+    <a class="btn btn-@buttonType @cssClasses" href="/@controller/@action">@(new HtmlString(text))</a>
+}
+
+@helper Button(string text, string id, string buttonType = "default", string cssClasses = "") { 
+    <button class="btn btn-@buttonType @cssClasses" id="@id">@(new HtmlString(text))</button>
+}

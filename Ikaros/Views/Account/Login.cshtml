@@ -1,0 +1,50 @@
+﻿@using Genxyz.Models
+@model LoginViewModel
+@{
+    ViewBag.Title = "Log in";
+}
+
+<div id="errorList">
+
+</div>
+@Html.AntiForgeryToken()
+@using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+<div id="login" class="col-md-12">
+    <div class="col-md-4"></div>
+    <div class="col-md-4" id="login">
+        <div class="centerHeader"><h1>GENXYZ</h1><h2>unleash your mind</h2></div>
+        <div id="loginArea">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control submit-on-enter loginBox", @id = "username", @placeholder="Username" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+            <br />
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control submit-on-enter loginBox", @placeholder="Password" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4">
+                        @Html.CheckBoxFor(m => m.RememberMe, new { hidden="true" })
+                    <br />
+                    <div class="btn btn-block btn-danger">Remember Me?</div><br />
+                    @GenericHelper.FormSubmitButton("Log in", "primary", "btn-block")
+                    <br /><br /><br />
+                    <a href="Register" class="btn btn-block btn-primary">Register</a>
+                </div>
+                <div class="col-md-4">
+                </div>
+            </div>
+                @* Enable this once you have account confirmation enabled for password reset functionality
+                <p>
+                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                </p>*@
+    </div>
+    <div class="col-md-4"></div>
+</div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

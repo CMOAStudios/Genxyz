@@ -1,0 +1,11 @@
+﻿@model Genxyz.Models.CreateLayer
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(x => x.InstanceID)
+    @Html.Raw("New Layer Name:<br />")
+    @Html.TextBoxFor(x => x.Name, new { @id ="newLayerName", @class = "click-on-enter ignore-other-inputs", data_target = "/Nodes/CreateLayer", data_click = "createLayerConfirm"})
+    <span id="createLayerConfirm" class="btn btn-success" data-target="/Nodes/CreateLayer"><span class="fa fa-floppy-o"></span></span>
+}

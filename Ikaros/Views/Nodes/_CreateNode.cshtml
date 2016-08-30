@@ -1,0 +1,27 @@
+﻿@model Genxyz.Models.CreateNode
+
+<div id="genxyz-input-container" class="genxyz-input" data-node="true">
+    @using (Html.BeginForm("CreateNode", "Nodes"))
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.HiddenFor(x => x.ParentNodeID)
+        @Html.HiddenFor(x => x.SiblingNodeID)
+        @Html.HiddenFor(x => x.xPos)
+        @Html.HiddenFor(x => x.yPos)
+        @Html.HiddenFor(x => x.zPos)
+        @Html.HiddenFor(x => x.InstanceID)
+        @Html.HiddenFor(x => x.LayerID)
+        @Html.HiddenFor(x => x.Comments)
+
+        @Html.TextAreaFor(x => x.Name, new { @class = "textarea-autosize ignore-other-inputs node-input", @id="genxyz-createNodeName"})
+        <span class="submit-form-button" hidden></span>
+    }
+
+    @*some meta data in here.*@
+    @* Used to watch to determine how to push the next step. Haven't decided how to use it just yet. *@
+    @Html.Hidden("PushDirShift", null, new { @class = "pushDirData" })
+    @Html.Hidden("PushDirCtrl", null, new { @class = "pushDirData" })
+    @Html.Hidden("PushDirPositiveGrow", null, new { @class = "pushDirData" })
+    @Html.Hidden("PushDirCount", null, new { @class = "pushDirData" })
+</div>

@@ -1,0 +1,112 @@
+﻿@using Genxyz.Models
+@model Genxyz.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register Account";
+}
+
+<div id="errorList">
+
+</div>
+@Html.AntiForgeryToken()
+@using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+{
+    <div id="login" class="col-md-12">
+        <div class="col-md-4"></div>
+        <div class="col-md-4" id="login">
+            <div class="centerHeader"><h1>GENXYZ</h1><h2>unleash your mind</h2></div>
+            <div id="loginArea">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control submit-on-enter loginBox", @id = "username", @placeholder = "Username" })
+                @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                <br />
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control submit-on-enter loginBox", @placeholder = "Password" })
+                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control submit-on-enter loginBox", @placeholder = "Confirm Password" })
+                @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
+                <br />
+                <br />
+                <div class="col-md-6">
+                    @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control submit-on-enter loginBox", @id = "username", @placeholder = "First Name" })
+                </div>
+                <div class="col-md-6">
+                    @Html.TextBoxFor(m => m.LastName, new { @class = "form-control submit-on-enter loginBox", @id = "username", @placeholder = "Last Name" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4">
+                    <br />
+                    @GenericHelper.FormSubmitButton("Register", "primary", "btn-block")
+                    <br /><br /><br />
+                    <a href="Login" class="btn btn-block btn-primary">Return to Login</a>
+                </div>
+                <div class="col-md-4">
+                </div>
+            </div>
+            @* Enable this once you have account confirmation enabled for password reset functionality
+                <p>
+                    @Html.ActionLink("Forgot your password?", "ForgotPassword")
+                </p>*@
+        </div>
+        <div class="col-md-4"></div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+@{
+    ViewBag.Title = "Register";
+}
+@*
+    <h2>@ViewBag.Title.</h2>
+    @Html.AntiForgeryToken()
+
+    {
+        <h4>Create a new account.</h4>
+        <hr />
+        @Html.ValidationSummary("", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.FirstName, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.FirstName, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(m => m.LastName, new { @class = "col-md-2 control-label" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(m => m.LastName, new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                @GenericHelper.FormSubmitButton("Register", "success")
+            </div>
+        </div>
+    }
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+*@

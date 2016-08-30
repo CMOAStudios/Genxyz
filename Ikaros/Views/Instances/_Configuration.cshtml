@@ -1,0 +1,29 @@
+﻿@model Genxyz.Models.InstanceConfiguration
+
+@using (Html.BeginForm("CreateJSON", "Instances", FormMethod.Post, new { @class= "removeEnterSubmit" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.InstanceConfigurationID)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.DisplayName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.DisplayName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.DisplayName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div class="col-md-4"><span type="button" class="btn btn-success button-submit-form" data-target="/Instances/CreateJSON">Create</span></div>
+            <div class="col-md-4"></div>
+            <div class="col-md-4"><span type="button" class="btn btn-danger button-cancel">Cancel</span></div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

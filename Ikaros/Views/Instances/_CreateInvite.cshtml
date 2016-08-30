@@ -1,0 +1,12 @@
+﻿@model Genxyz.Models.CreateInvite
+
+<div class="inviteRow row">
+    Invite Member:<br />
+    @using (Html.BeginForm("SendInvite", "Instances"))
+    {
+        @Html.HiddenFor(model => model.InstanceID)
+        @Html.TextBoxFor(model => model.Recipient, new { @placeholder="Email", @class="input-large" })
+        <span class="indexButton submit-form-button" data-target="/Instances/SendInvite">Send</span>
+        <span class="errorList align-left"></span>
+    }
+</div>

@@ -1,0 +1,169 @@
+﻿@{
+    ViewBag.Title = "Genxyz";
+    Layout = "~/Views/Shared/_GenxyzLayout.cshtml";
+}
+
+<span id="AntiForgeryToken" hidden>@Html.AntiForgeryToken()</span>
+<div class="col-md-12" id="GenxyzUI">
+    <div id="genxyz-topBar" class="col-md-12 genxyz-topBar-Icon">
+        @Html.Partial("~/Views/Shared/_TopBar.cshtml")
+    </div>
+</div>
+<div class="genxyz-ui-menu" id="genxyz-instanceMenu" hidden>
+    <label>Node size:</label>
+    <input type="text" id="nodeSize" /><br />
+    <label>Zoom:</label>
+    <input type="text" id="nodeZoom" />
+    <label>InstanceID:</label>
+    <input type=hidden id="instanceID" value="@ViewBag.Instance" />
+</div>
+
+<div id="genxyz-rightClickMenu">
+    @Html.Partial("~/Views/Nodes/_RightClickMenu.cshtml")
+</div>
+<div id="genxyz-detailsMenu">
+    @Html.Partial("~/Views/Nodes/_Details.cshtml")
+</div>
+
+<div id="genxyz-debug" hidden>
+    @Html.Partial("~/Views/Shared/_Debug.cshtml")
+</div>
+
+<div class="genxyz-menu genxyz-selectMenu" id="genxyz-layerMenu" data-icon="layersIcon" hidden>
+    <div>
+        <label>Layers:</label>
+        <span id="layerList"></span>
+    </div>
+</div>
+
+<div class="genxyz-menu genxyz-selectMenu" id="genxyz-filterLayerMenu" data-icon="filterLayersIcon" hidden>
+    <div>
+        <label>Defined Layers:</label>
+        <span id="definedLayerList"></span>
+        <span class="lineItem topBorder">
+            <span class="layerItem selectLayer toggleAllLayers">
+                Show All
+            </span>
+        </span>
+    </div>
+    <span id="openNewLayerMenu">Add<span class="genxyz-icon fa fa-plus-square"></span></span>
+    <div>
+        <label>Generational Layers:</label>
+        <span id="genLayerList"></span>
+    </div>
+</div>
+
+<div class="genxyz-menu" id="genxyz-editLayer">
+    @Html.Partial("~/Views/Nodes/_EditLayer.cshtml")
+</div>
+
+<div class="genxyz-menu" id="genxyz-subMenu">
+    Loading...
+</div>
+
+<div class="genxyz-menu" id="genxyz-newLayer">
+    @Html.Partial("~/Views/Nodes/_CreateLayer.cshtml")
+</div>
+
+<div class="genxyz-dialog" id="genxyz-help">
+    <h2><i class="fa fa-pointer"></i> Mouse Controls</h2>
+    <div class="row">
+        <div class="col-md-12">
+            Left Click: <span class="helpText align-right">Select</span>
+        </div>
+        <div class="col-md-12">
+            Left Click Drag: <span class="helpText align-right">Pan Camera</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            Left Click Drag Node: <span class="helpText align-right">Move Node</span>
+        </div>
+
+        <div class="col-md-12">
+            Ctrl + Left Click: <span class="helpText align-right">Create Node</span>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            Right Click: <span class="helpText align-right">Context Menu</span>
+        </div>
+        <div class="col-md-12">
+            Right Click Drag: <span class="helpText align-right">Zoom Camera</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">With node/s selected:</div>
+        <div class="col-md-12">
+            Ctrl Right Click: <span class="helpText align-right">Connect target as child of selected node/s</span>
+        </div>
+        <div class="col-md-12">
+            Alt Right Click: <span class="helpText align-right">Connect target with symbolic link to selected node/s</span>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
+        <div class="col-md-12">
+            Scroll Wheel: <span class="helpText align-right">Zoom</span>
+        </div>
+        <div class="col-md-12">
+            Scroll Wheel Click and Drag: <span class="helpText align-right">Rotate Camera</span>
+        </div>
+    </div>
+    <h2><i class="fa fa-keyboard-o"></i> Keyboard Navigation</h2>
+    <div class="row">
+        <div class="col-md-12">
+            Up/Down/Left/Right: <span class="helpText align-right">Pan Camera</span>
+        </div>
+        <div class="col-md-12">
+            W/S/A/D: <span class="helpText align-right">Pan Camera</span>
+        </div>
+        <div class="col-md-12">
+            Shift + Up/Down: <span class="helpText align-right">Zoom Camera</span>
+        </div>
+        <div class="col-md-12">
+            Shift + W/S: <span class="helpText align-right">Zoom Camera</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            Ctrl + Up/Down/Left/Right: <span class="helpText align-right">Rotate Camera</span>
+        </div>
+        <div class="col-md-12">
+            Ctrl + W/S/A/D: <span class="helpText align-right">Rotate Camera</span>
+        </div>
+        <div class="col-md-12">
+            Spacebar: <span class="helpText align-right">Zoom to selected node or to starting position if no node selected</span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            Shift + Spacebar: <span class="helpText align-right">Return to normal rotation</span>
+        </div>
+    </div>
+    <hr />
+    <h2><i class="fa fa-keyboard-o"></i> Keyboard Shortcuts</h2>
+    <div class="row">
+        <div class="col-md-12">
+            <span class="text-center">H: <br /><span class="helpText">Toggle Help</span></span>
+        </div>
+        <div class="col-md-12">
+            <span class="text-center">G: <br /><span class="helpText">Toggle Grid</span></span>
+        </div>
+        <div class="col-md-12">
+            <span class="text-center">K: <br /><span class="helpText">Toggle Snap</span></span>
+        </div>
+        <div class="col-md-12">
+            <span class="text-center">L: <br /><span class="helpText">Paths Menu</span></span>
+        </div>
+        <div class="col-md-12">
+            <span class="text-center">Z: <br /><span class="helpText">Toggle Debug</span></span>
+        </div>
+    </div>
+</div>
+
+
+
+@Html.Partial("~/Views/Nodes/_DeleteNode.cshtml")
+@Html.Partial("~/Views/Nodes/_CreateNode.cshtml")
